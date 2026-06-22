@@ -1,5 +1,8 @@
 node_modules
 
+# ESLint
+.eslintcache
+
 # Output
 .output
 .vercel
@@ -7,6 +10,9 @@ node_modules
 .wrangler
 /.svelte-kit
 /build
+
+# Coverage
+/coverage
 
 # OS
 .DS_Store
