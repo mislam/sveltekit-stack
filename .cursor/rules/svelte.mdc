@@ -1,0 +1,50 @@
+---
+description: Svelte 5 component conventions — runes mode, no legacy patterns
+globs: **/*.svelte,**/*.svelte.ts,**/*.svelte.js
+alwaysApply: false
+---
+
+# Svelte Components
+
+This project uses **Svelte 5 runes mode** (enforced in vite.config.ts). Do not introduce Svelte 3/4 patterns in new or edited code.
+
+## Props & state
+
+- `$props()` with TypeScript types — `let { foo = "default" }: { foo?: string } = $props()`
+- `$state()` for reactive local state
+- `$derived()` / `$derived.by()` for computed values
+- `$effect()` for side effects
+- `$bindable()` for two-way bindable props
+- `$inspect()` for reactive debugging (dev only)
+- `<script lang="ts">` in components
+
+## Events & bindings
+
+- `onclick={handler}` event attributes (not `on:click`)
+- Standard HTML attributes for events (`oninput`, `onsubmit`, etc.)
+
+## Snippets
+
+- `{#snippet name(params)}...{/snippet}` to define; `{@render name(args)}` to use
+- `{@render children?.()}` for default content (not `<slot>`)
+- Named snippets via `$props()` — not named slots
+
+## SvelteKit
+
+- Use `+page.server.ts` for sensitive data fetching and auth — never expose secrets in `+page.ts`
+- Prefer form actions (`+page.server.ts` `actions`) for mutations; avoid client-only fetch for writes
+- Use `+server.ts` for JSON API endpoints only
+- The Svelte MCP (`list-sections` → `get-documentation`) provides current docs for `load`, routing, and forms
+
+## Avoid (legacy Svelte 4)
+
+- `export let` for props
+- `$:` reactive statements (unless touching legacy code on purpose)
+- `on:click`, `on:input`, etc.
+- `createEventDispatcher`
+- `<slot>` / `$$slots`
+- `$$props` / `$$restProps`
+
+## Before finishing
+
+Use the Svelte MCP `svelte-autofixer` tool and fix all issues before delivering code.

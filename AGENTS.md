@@ -3,29 +3,34 @@
 - **Language**: TypeScript
 - **Package Manager**: bun
 - **Add-ons**: prettier, eslint, vitest, tailwindcss, sveltekit-adapter, drizzle, mcp
+- **Svelte**: 5 runes mode — see `.cursor/rules/svelte.mdc`
+- **Conventions**: see `.cursor/rules/conventions.mdc` (tooling, commits, secrets, git)
+
+## Agent policy
+
+- **Git:** read-only inspection unless the user explicitly asks to run a mutating command — full rules in `.cursor/rules/conventions.mdc`
+- **Secrets:** never read `.env` unless explicitly asked; prefer `.env.example`
 
 ---
 
-You are able to use the Svelte MCP server, where you have access to comprehensive Svelte 5 and SvelteKit documentation. Here's how to use the available tools effectively:
+## Svelte MCP
 
-## Available Svelte MCP Tools:
+Configured in `.cursor/mcp.json`. When working on Svelte or SvelteKit:
 
 ### 1. list-sections
 
-Use this FIRST to discover all available documentation sections. Returns a structured list with titles, use_cases, and paths.
-When asked about Svelte or SvelteKit topics, ALWAYS use this tool at the start of the chat to find relevant sections.
+Use **FIRST** to discover available documentation sections (titles, use_cases, paths).
 
 ### 2. get-documentation
 
-Retrieves full documentation content for specific sections. Accepts single or multiple sections.
-After calling the list-sections tool, you MUST analyze the returned documentation sections (especially the use_cases field) and then use the get-documentation tool to fetch ALL documentation sections that are relevant for the user's task.
+Fetch **all** documentation sections relevant to the task. Analyze `use_cases` from list-sections before choosing which to retrieve.
 
 ### 3. svelte-autofixer
 
-Analyzes Svelte code and returns issues and suggestions.
-You MUST use this tool whenever writing Svelte code before sending it to the user. Keep calling it until no issues or suggestions are returned.
+**Must** run after writing or editing `.svelte` files. Keep calling until no issues or suggestions remain.
 
 ### 4. playground-link
 
-Generates a Svelte Playground link with the provided code.
-After completing the code, ask the user if they want a playground link. Only call this tool after user confirmation and NEVER if code was written to files in their project.
+Only if the user asks. **Never** when code was written to project files.
+
+Component patterns and runes conventions: `.cursor/rules/svelte.mdc`.
