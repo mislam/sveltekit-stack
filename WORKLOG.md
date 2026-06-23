@@ -12,10 +12,10 @@ Single source for what shipped and what's next. Not duplicated in `docs/product.
 - Cursor rules and agent guidance (`AGENTS.md`, `.cursor/rules/`)
 - Project README (stack, bun workflow, dev commands)
 - `docs/product.md` stub and `AGENTS.md` context file pointers
+- Local dev database: Docker Compose (Postgres + Neon HTTP proxy), `dev:up`/`dev:down`
 
 ## Backlog
 
-- [ ] Local dev database: Docker Compose, `dev:up`/`dev:down`, `.env.example`
 - [ ] Expand product scope in `docs/product.md`
 - [ ] Replace scaffold welcome page with first real feature
 - [ ] CI (GitHub Actions: lint, check, test)

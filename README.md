@@ -35,7 +35,7 @@ Dev server: http://localhost:5173
 ### Development
 
 ```bash
-bun dev:up      # start Postgres (Docker)
+bun dev:up      # start Postgres + Neon proxy (Docker)
 bun dev         # SvelteKit dev server
 bun dev:down    # stop Docker services
 ```
@@ -60,10 +60,20 @@ Do not use `bun test` — that invokes Bun's built-in runner, not this project's
 
 ## Database
 
-Postgres runs in Docker (`compose.yaml`). Local connection string is in `.env.example`.
+Same driver stack as production (`@neondatabase/serverless` + `drizzle-orm/neon-http`), with Postgres and a [Neon HTTP proxy](https://neon.com/guides/local-development-with-neon) in Docker (`docker/neon-proxy/`).
+
+```mermaid
+flowchart LR
+  App["App<br/>(neon-http)"] -->|HTTP :4444| Proxy["Neon proxy"]
+  Proxy --> DB[(Postgres :5432)]
+  Kit["Drizzle Kit"] -->|TCP| DB
+```
+
+Offline: add `127.0.0.1 db.localtest.me` to `/etc/hosts`.
 
 ```bash
-bun db:push       # apply schema
+bun dev:up        # Postgres + Neon proxy (builds proxy image on first run)
+bun db:push       # apply schema (requires dev:up)
 bun db:generate   # generate migrations
 bun db:migrate    # run migrations
 bun db:studio     # Drizzle Studio
