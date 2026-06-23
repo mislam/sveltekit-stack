@@ -6,6 +6,16 @@
 - **Svelte**: 5 runes mode — see `.cursor/rules/svelte.mdc`
 - **Conventions**: see `.cursor/rules/conventions.mdc` (tooling, commits, secrets, git)
 
+### Context files
+
+| File                                 | When to read                                    |
+| ------------------------------------ | ----------------------------------------------- |
+| [`README.md`](README.md)             | Stack, local dev setup, scripts                 |
+| [`docs/product.md`](docs/product.md) | Feature work — scope, terminology, domain rules |
+| [`WORKLOG.md`](WORKLOG.md)           | Planning, backlog, or recent history            |
+
+Default for feature tasks: **`docs/product.md`** + **`WORKLOG.md`**. Add **`README.md`** when setup or scripts matter.
+
 ## Agent policy
 
 - **Git:** read-only inspection unless the user explicitly asks to run a mutating command — full rules in `.cursor/rules/conventions.mdc`

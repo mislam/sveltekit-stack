@@ -1,42 +1,82 @@
-# sv
+# NextBigApp
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Web app for my next big SvelteKit project. Product scope and domain rules live in [`docs/product.md`](docs/product.md).
 
-## Creating a project
+## Tech Stack
 
-If you're seeing this, you've probably already done this step. Congrats!
+- **Framework**: [SvelteKit](https://kit.svelte.dev/) 2 + [Svelte](https://svelte.dev/) 5
+- **Language**: TypeScript
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/) 4
+- **Database**: [PostgreSQL](https://www.postgresql.org/) 17 (Docker locally, [Neon](https://neon.tech/) in production)
+- **ORM**: [Drizzle](https://orm.drizzle.team/)
+- **Deploy**: [Vercel](https://vercel.com/) (`main` branch only)
+- **Testing**: [Vitest](https://vitest.dev/) (unit + browser component tests)
+- **Package manager**: [Bun](https://bun.sh/)
 
-```sh
-# create a new project
-npx sv create my-app
+## Quick Start
+
+### Prerequisites
+
+- [Bun](https://bun.sh/)
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+
+### Setup
+
+```bash
+bun install
+cp .env.example .env
+bun dev:up
+bun db:push
+bun dev
 ```
 
-To recreate this project with the same configuration:
+Dev server: http://localhost:5173
 
-```sh
-# recreate this project
-bun x sv@0.16.1 create --template minimal --types ts --add prettier eslint vitest="usages:unit,component" tailwindcss="plugins:none" sveltekit-adapter="adapter:vercel" drizzle="database:postgresql+postgresql:neon" mcp="ide:cursor+setup:local" --install bun app
+### Development
+
+```bash
+bun dev:up      # start Postgres (Docker)
+bun dev         # SvelteKit dev server
+bun dev:down    # stop Docker services
 ```
 
-## Developing
+## Code Quality
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```sh
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+```bash
+bun check       # typecheck (svelte-check)
+bun format      # Prettier write
+bun lint        # ESLint + Prettier check
+bun lint:fix    # ESLint fix + Prettier write
 ```
 
-## Building
+## Testing
 
-To create a production version of your app:
-
-```sh
-npm run build
+```bash
+bun run test        # run all tests once (CI-style)
+bun run test:unit   # Vitest watch mode
 ```
 
-You can preview the production build with `npm run preview`.
+Do not use `bun test` — that invokes Bun's built-in runner, not this project's Vitest setup.
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+## Database
+
+Postgres runs in Docker (`compose.yaml`). Local connection string is in `.env.example`.
+
+```bash
+bun db:push       # apply schema
+bun db:generate   # generate migrations
+bun db:migrate    # run migrations
+bun db:studio     # Drizzle Studio
+```
+
+## Git Hooks
+
+[Husky](https://typicode.github.io/husky/) + [lint-staged](https://github.com/okonet/lint-staged):
+
+- **Pre-commit**: lint-staged → typecheck → tests
+- **Commit-msg**: [Conventional Commits](https://www.conventionalcommits.org/) via commitlint
+
+## Documentation
+
+- [Product scope](docs/product.md)
+- [Worklog / backlog](WORKLOG.md)
