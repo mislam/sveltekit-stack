@@ -1,0 +1,45 @@
+---
+description: Bits UI — only when user @-mentions or asks for headless components
+globs:
+alwaysApply: false
+---
+
+# Bits UI
+
+**Opt-in only.** This rule applies when you @-mention it (or the user explicitly asks for Bits UI). Do not add Bits UI for simple UI — plain HTML + Tailwind is fine for static layout, links, basic forms, and one-off buttons.
+
+Reach for Bits UI when the task needs headless primitives: dialogs, menus, popovers, comboboxes, tabs, tooltips, etc. — especially keyboard/focus/ARIA behavior you'd otherwise hand-roll.
+
+## Usage
+
+- Import from `"bits-ui"` — e.g. `import { Dialog } from "bits-ui"`
+- Style with Tailwind via `class` prop on each part (`.Root`, `.Trigger`, `.Content`, …)
+- Build reusable styled wrappers in `src/lib/components/ui/`; pages compose those, not raw Bits primitives
+- Ignore demo classnames in Bits docs unless relevant to the task
+
+## Custom elements
+
+Use the `child` snippet when you need scoped styles, transitions, or a custom element:
+
+```svelte
+<Dialog.Trigger>
+	{#snippet child({ props })}
+		<button {...props} class="btn">Open</button>
+	{/snippet}
+</Dialog.Trigger>
+```
+
+Always spread `{...props}`. For floating content (Popover, Select, Dialog, Tooltip, …): two-level structure with `{...wrapperProps}` on the outer element and `{...props}` on the inner — never style the wrapper.
+
+## Docs (before implementing a component)
+
+1. Index: https://bits-ui.com/llms.txt
+2. Per component: `https://bits-ui.com/docs/components/{component}/llms.txt`
+3. Core guides: [child-snippet](https://bits-ui.com/docs/child-snippet/llms.txt), [styling](https://bits-ui.com/docs/styling/llms.txt)
+
+Date/time components require `@internationalized/date` (add when first used).
+
+## Do not
+
+- Add another UI component library without explicit request
+- Use legacy Svelte 4 slot/event patterns with Bits UI (see `svelte.mdc`)

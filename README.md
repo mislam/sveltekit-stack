@@ -6,7 +6,7 @@ Web app for my next big SvelteKit project. Product scope and domain rules live i
 
 - **Framework**: [SvelteKit](https://kit.svelte.dev/) 2 + [Svelte](https://svelte.dev/) 5
 - **Language**: TypeScript
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/) 4
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/) 4 + [Bits UI](https://bits-ui.com/) (headless)
 - **Database**: [PostgreSQL](https://www.postgresql.org/) 17 (Docker locally, [Neon](https://neon.tech/) in production)
 - **ORM**: [Drizzle](https://orm.drizzle.team/)
 - **Deploy**: [Vercel](https://vercel.com/) (`main` branch only)

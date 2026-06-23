@@ -13,6 +13,7 @@ Single source for what shipped and what's next. Not duplicated in `docs/product.
 - Project README (stack, bun workflow, dev commands)
 - `docs/product.md` stub and `AGENTS.md` context file pointers
 - Local dev database: Docker Compose (Postgres + Neon HTTP proxy), `dev:up`/`dev:down`
+- Bits UI with agent rules and docs integration (`bits-ui.mdc`, `AGENTS.md`)
 
 ## Backlog
 

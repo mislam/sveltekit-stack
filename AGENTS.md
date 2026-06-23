@@ -2,8 +2,9 @@
 
 - **Language**: TypeScript
 - **Package Manager**: bun
-- **Add-ons**: prettier, eslint, vitest, tailwindcss, sveltekit-adapter, drizzle, mcp
+- **Add-ons**: prettier, eslint, vitest, tailwindcss, sveltekit-adapter, drizzle, mcp, bits-ui
 - **Svelte**: 5 runes mode — see `.cursor/rules/svelte.mdc`
+- **UI**: Bits UI installed (headless, **opt-in**) — @ `.cursor/rules/bits-ui.mdc` when building complex interactive UI
 - **Conventions**: see `.cursor/rules/conventions.mdc` (tooling, commits, secrets, git)
 
 ### Context files
@@ -44,3 +45,11 @@ Fetch **all** documentation sections relevant to the task. Analyze `use_cases` f
 Only if the user asks. **Never** when code was written to project files.
 
 Component patterns and runes conventions: `.cursor/rules/svelte.mdc`.
+
+---
+
+## Bits UI (opt-in)
+
+Installed for complex interactive patterns (dialogs, menus, selects, etc.). **Do not default to Bits UI** for every Svelte file — use plain markup + Tailwind unless the task needs headless primitives or the user asks.
+
+When implementing Bits UI: @ `.cursor/rules/bits-ui.mdc` and fetch docs from https://bits-ui.com/llms.txt (per-component URLs in that rule).
