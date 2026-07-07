@@ -4,7 +4,7 @@
 
 ## Overview
 
-NextBigApp is a web app for my next big project. _(Expand: who it's for, core problem, MVP scope.)_
+_(Who it's for, core problem, MVP.)_
 
 ## Terminology
 

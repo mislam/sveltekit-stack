@@ -1,6 +1,6 @@
-# NextBigApp
+# SvelteKit Stack
 
-Web app for my next big SvelteKit project. Product scope and domain rules live in [`docs/product.md`](docs/product.md).
+An opinionated SvelteKit stack — auth, database, linting, git hooks, and local-prod DB parity already set up. Product scope for each project lives in [`docs/product.md`](docs/product.md).
 
 ## Tech Stack
 
@@ -21,6 +21,20 @@ Web app for my next big SvelteKit project. Product scope and domain rules live i
 - [Bun](https://bun.sh/)
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/)
 
+### Create new project
+
+```bash
+git clone git@github.com:mislam/sveltekit-stack.git my-app
+cd my-app && rm -rf .git
+```
+
+Set the project name (e.g. `my-app`) in `package.json`, `compose.yaml`, and `bun.lock`.
+
+```bash
+git init
+git add -A && git commit -m "chore: scaffold from sveltekit-stack"
+```
+
 ### Setup
 
 ```bash
@@ -29,7 +43,7 @@ cp .env.example .env
 bun auth:secret --write
 ```
 
-Review the [instructions](https://www.better-auth.com/docs/authentication/google) for adding a Google redirect URI for local development.
+Add `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` to `.env`, and configure a local redirect URI — see [Better Auth docs](https://www.better-auth.com/docs/authentication/google).
 
 ```bash
 bun dev:up
@@ -38,6 +52,8 @@ bun dev
 ```
 
 Dev server: http://localhost:5173
+
+Update [`docs/product.md`](docs/product.md) with your product scope.
 
 ### Development
 

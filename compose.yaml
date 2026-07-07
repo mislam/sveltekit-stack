@@ -1,4 +1,4 @@
-name: nextbigapp
+name: sveltekit-stack
 
 services:
   postgres:

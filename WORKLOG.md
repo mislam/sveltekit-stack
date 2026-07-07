@@ -6,9 +6,8 @@ Single source for what shipped and what's next. Not duplicated in `docs/product.
 
 - Scaffold SvelteKit project (minimal, TypeScript, bun)
 - Dev tooling: Prettier, ESLint (simple-import-sort), Vercel adapter, Cursor MCP
-- Repo hygiene: git hooks, editor settings, Vercel main-only deploys
+- Repo hygiene: git hooks (husky, lint-staged, commitlint), editor settings, Vercel main-only deploys
 - Codebase formatted to project style
-- Git hooks: husky, lint-staged, commitlint
 - Cursor rules and agent guidance (`AGENTS.md`, `.cursor/rules/`)
 - Project README (stack, bun workflow, dev commands)
 - `docs/product.md` stub and `AGENTS.md` context file pointers
@@ -19,7 +18,7 @@ Single source for what shipped and what's next. Not duplicated in `docs/product.
 ## Backlog
 
 - [ ] Expand product scope in `docs/product.md`
-- [ ] Replace scaffold welcome page with first real feature
+- [ ] Replace auth demo page with first real feature
 - [ ] CI (GitHub Actions: lint, check, test)
 - [ ] Production Neon database setup
 - [ ] Google Cloud OAuth credentials for production domain
