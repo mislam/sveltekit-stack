@@ -14,6 +14,7 @@ Single source for what shipped and what's next. Not duplicated in `docs/product.
 - `docs/product.md` stub and `AGENTS.md` context file pointers
 - Local dev database: Docker Compose (Postgres + Neon HTTP proxy), `dev:up`/`dev:down`
 - Bits UI with agent rules and docs integration (`bits-ui.mdc`, `AGENTS.md`)
+- Auth: Better Auth with Drizzle adapter, Google OAuth only (`src/lib/server/auth.ts`)
 
 ## Backlog
 
@@ -21,3 +22,4 @@ Single source for what shipped and what's next. Not duplicated in `docs/product.
 - [ ] Replace scaffold welcome page with first real feature
 - [ ] CI (GitHub Actions: lint, check, test)
 - [ ] Production Neon database setup
+- [ ] Google Cloud OAuth credentials for production domain

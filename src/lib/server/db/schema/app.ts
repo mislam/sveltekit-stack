@@ -1,3 +1,5 @@
+// Domain schema — split into multiple files when the file gets too big.
+
 import { integer, pgTable, serial, text } from "drizzle-orm/pg-core"
 
 export const task = pgTable("task", {

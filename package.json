@@ -20,7 +20,9 @@
 		"db:push": "drizzle-kit push",
 		"db:generate": "drizzle-kit generate",
 		"db:migrate": "drizzle-kit migrate",
-		"db:studio": "drizzle-kit studio"
+		"db:studio": "drizzle-kit studio",
+		"auth:secret": "bun scripts/generate-better-auth-secret.ts",
+		"auth:schema": "SCHEMA=src/lib/server/db/schema/auth.ts; svelte-kit sync && auth generate --config src/lib/server/auth.ts --output $SCHEMA --yes && eslint --fix $SCHEMA && prettier --write $SCHEMA"
 	},
 	"lint-staged": {
 		"*.{js,ts,svelte}": [
@@ -41,6 +43,8 @@
 		"@types/node": "^22",
 		"@types/ws": "^8.18.1",
 		"@vitest/browser-playwright": "^4.1.8",
+		"auth": "^1.6.23",
+		"better-auth": "^1.6.23",
 		"bits-ui": "^2.18.1",
 		"drizzle-kit": "^0.31.10",
 		"drizzle-orm": "^0.45.2",

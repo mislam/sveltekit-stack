@@ -9,6 +9,7 @@ Web app for my next big SvelteKit project. Product scope and domain rules live i
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/) 4 + [Bits UI](https://bits-ui.com/) (headless)
 - **Database**: [PostgreSQL](https://www.postgresql.org/) 17 (Docker locally, [Neon](https://neon.tech/) in production)
 - **ORM**: [Drizzle](https://orm.drizzle.team/)
+- **Auth**: [Better Auth](https://www.better-auth.com/) (Google OAuth only)
 - **Deploy**: [Vercel](https://vercel.com/) (`main` branch only)
 - **Testing**: [Vitest](https://vitest.dev/) (unit + browser component tests)
 - **Package manager**: [Bun](https://bun.sh/)
@@ -25,6 +26,12 @@ Web app for my next big SvelteKit project. Product scope and domain rules live i
 ```bash
 bun install
 cp .env.example .env
+bun auth:secret --write
+```
+
+Review the [instructions](https://www.better-auth.com/docs/authentication/google) for adding a Google redirect URI for local development.
+
+```bash
 bun dev:up
 bun db:push
 bun dev

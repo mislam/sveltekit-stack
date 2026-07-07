@@ -3,6 +3,9 @@
 		"svelte": {
 			"command": "npx",
 			"args": ["-y", "@sveltejs/mcp"]
+		},
+		"better-auth": {
+			"url": "https://mcp.better-auth.com/mcp"
 		}
 	}
 }
